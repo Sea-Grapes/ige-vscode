@@ -1,0 +1,51 @@
+{
+  "name": "ige",
+  "displayName": "IGELang",
+  "description": "Syntax Highlighting for IGE in VSCode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ige",
+        "aliases": [
+          "ImageGameEngine",
+          "ige"
+        ],
+        "extensions": [
+          ".ige"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ige",
+        "scopeName": "source.ige",
+        "path": "./syntaxes/ige.tmLanguage.json"
+      }
+    ]
+  },
+  "main": "out/extension.js",
+  "files": [
+    "data/**"
+  ],
+  "scripts": {
+    "vscode:prepublish": "tsc -b"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.7",
+    "@types/vscode": "^1.97.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "yaml": "^2.7.0"
+  }
+}
