@@ -54,13 +54,23 @@ ws.onDidChangeTextDocument((data: any) => {
       const newLines = change.text.split(rgx_newline)
 
       if(start.line === end.line && newLines.length === 1) {
+        // console.log('same line insertion')
+        // console.log(before, newLines[0], after)
         doc[start.line] = before + newLines[0] + after
       } else {
+        console.log('end: ', end.line)
+        console.log('start: ', start.line)
+        console.log(`splicing at ${start.line}, removing ${end.line - start.line + 1} lines`)
+        console.log(`inserting "${before + newLines[0]}", "${newLines.at(-1) + after}" and the following: `, ...newLines.slice(1, -1))
+
+        let newBefore = before + newLines[0]
+        let newAfter = newLines.at(-1) + after
+
         doc.splice(
           start.line,
           end.line - start.line + 1,
           before + newLines[0],
-          newLines.slice(1, -1),
+          ...newLines.slice(1, -1),
           newLines.at(-1) + after
         )
       }
