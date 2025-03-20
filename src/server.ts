@@ -40,7 +40,7 @@ ws.onDidOpenTextDocument(data => {
 })
 
 ws.onDidChangeTextDocument((data: any) => {
-  console.log(JSON.stringify(data, null, 2))
+  // console.log(JSON.stringify(data, null, 2))
   
   const doc = documents[data.textDocument.uri]
   if(!doc) return
@@ -69,7 +69,7 @@ ws.onDidChangeTextDocument((data: any) => {
 
         doc.splice(
           start.line,
-          end.line - start.line + 1,
+          Math.abs(end.line - start.line + 1),
           ...res
         )
       }
@@ -81,7 +81,7 @@ ws.onDidChangeTextDocument((data: any) => {
   })
 
   console.log('doc update')
-  console.log(doc.join('\n'))
+  console.log(doc)
 })
 
 ws.onDidCloseTextDocument(data => {
