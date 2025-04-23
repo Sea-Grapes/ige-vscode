@@ -78,7 +78,6 @@ ws.onSignatureHelp((params: SignatureHelpParams): SignatureHelp => {
     }
   })
 
-  // console.log(tokens)
 
   // if we're in first token, quit
   const currentTokenIndex = tokens.findIndex(token => position.character >= token.start && position.character <= token.end)
